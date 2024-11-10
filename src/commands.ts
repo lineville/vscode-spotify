@@ -44,12 +44,12 @@ export function createCommands(sC: SpotifyClient): { dispose: () => void } {
         actionsCreator.seekTo(seekToMs);
     });
 
-    const skipForward = commands.registerCommand('spotify.skipForward', () => {
-        actionsCreator.skipForward();
+    const skipForward = commands.registerCommand('spotify.skipForward', (seconds: number = 15) => {
+        actionsCreator.skipForward(seconds);
     });
 
-    const skipBack = commands.registerCommand('spotify.skipBack', () => {
-        actionsCreator.skipBack();
+    const skipBack = commands.registerCommand('spotify.skipBack', (seconds: number = 15) => {
+        actionsCreator.skipBack(seconds);
     });
 
     return Disposable.from(lyrics,

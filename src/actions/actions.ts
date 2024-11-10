@@ -309,20 +309,20 @@ class ActionCreator {
     @autobind
     @withErrorAsync()
     @withApi()
-    async skipForward(api?: Api): Promise<void> {
+    async skipForward(seconds: number, api?: Api): Promise<void> {
         const state = getState();
         const currentPosition = state.playerState.position;
-        const seekTo = (currentPosition + 15) * 1000; // 15 seconds ahead
+        const seekTo = (currentPosition + seconds) * 1000;
         await api!.player.seek.put(seekTo);
     }
 
     @autobind
     @withErrorAsync()
     @withApi()
-    async skipBack(api?: Api): Promise<void> {
+    async skipBack(seconds: number, api?: Api): Promise<void> {
         const state = getState();
         const currentPosition = state.playerState.position;
-        const seekTo = Math.max((currentPosition - 15) * 1000, 0); // 15 seconds back
+        const seekTo = Math.max((currentPosition - seconds) * 1000, 0);
         await api!.player.seek.put(seekTo);
     }
 
