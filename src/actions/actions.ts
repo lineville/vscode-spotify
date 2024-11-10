@@ -360,4 +360,3 @@ class ActionCreator {
 }
 
 export const actionsCreator = new ActionCreator();
-export const { skipForward, skipBack } = actionsCreator;
