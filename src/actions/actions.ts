@@ -63,6 +63,9 @@ export function withErrorAsync() {
             try {
                 return await originalMethod.apply(this, args);
             } catch (e) {
+                if (e.message && e.message.includes('seek') && e.message.includes('invalid json response')) {
+                    return;
+                }
                 showWarningMessage('Failed to perform operation ' + e.message || e);
             }
         };
