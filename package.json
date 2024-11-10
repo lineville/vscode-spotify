@@ -58,6 +58,14 @@
         "title": "Spotify Play Previous Song"
       },
       {
+        "command": "spotify.skipForward",
+        "title": "Spotify Skip Forward 15 seconds"
+      },
+      {
+        "command": "spotify.skipBack",
+        "title": "Spotify Skip Back 15 seconds"
+      },
+      {
         "command": "spotify.play",
         "title": "Spotify Play"
       },
@@ -207,10 +215,20 @@
           "default": true,
           "description": "Whether to show next button."
         },
+        "spotify.showSkipForwardButton": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to show skip forward button."
+        },
         "spotify.showPreviousButton": {
           "type": "boolean",
           "default": true,
           "description": "Whether to show previous button."
+        },
+        "spotify.showSkipBackButton": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to show skip backward button."
         },
         "spotify.showPlayButton": {
           "type": "boolean",
@@ -292,20 +310,30 @@
           "default": 30,
           "description": "Base value of priority for all vscode-spotify elements in Status Bar(priority = basePriority+priority). This is done to avoid 'conflicts' with other extensions. "
         },
+        "spotify.skipForwardButtonPriority": {
+          "type": "number",
+          "default": 6,
+          "description": "Priority of skip forward button."
+        },
         "spotify.nextButtonPriority": {
           "type": "number",
-          "default": 8,
+          "default": 7,
           "description": "Priority of next button."
-        },
-        "spotify.previousButtonPriority": {
-          "type": "number",
-          "default": 10,
-          "description": "Priority of previous button."
         },
         "spotify.playButtonPriority": {
           "type": "number",
-          "default": 7,
+          "default": 8,
           "description": "Priority of play button."
+        },
+        "spotify.previousButtonPriority": {
+          "type": "number",
+          "default": 9,
+          "description": "Priority of previous button."
+        },
+        "spotify.skipBackButtonPriority": {
+          "type": "number",
+          "default": 10,
+          "description": "Priority of skip backward button."
         },
         "spotify.pauseButtonPriority": {
           "type": "number",

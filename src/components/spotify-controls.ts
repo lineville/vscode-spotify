@@ -92,7 +92,9 @@ export class SpotifyControls {
             { id: 'toggleShuffling', text: '$(git-branch)', dynamicColor: (isShuffling?: boolean) => isShuffling ? 'white' : 'darkgrey' },
             { id: 'lyrics', text: '$(book)' },
             { id: BUTTON_ID_SIGN_IN, text: '$(sign-in)' },
-            { id: BUTTON_ID_SIGN_OUT, text: '$(sign-out)' }
+            { id: BUTTON_ID_SIGN_OUT, text: '$(sign-out)' },
+            { id: 'skipForward', text: '$(debug-step-over)' },
+            { id: 'skipBack', text: '$(debug-step-back)' }
         ];
         const extension = extensions.getExtension('shyykoserhiy.vscode-spotify');
         if (!extension) {
@@ -136,6 +138,7 @@ export class SpotifyControls {
             }
             if (button.id === BUTTON_ID_SIGN_OUT) {
                 this._signOutButton = button;
+                return;
             }
         });
     }

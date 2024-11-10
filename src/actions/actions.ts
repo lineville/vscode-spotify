@@ -304,6 +304,26 @@ class ActionCreator {
     }
 
     @autobind
+    @withErrorAsync()
+    @withApi()
+    async skipForward(api?: Api): Promise<void> {
+        const state = getState();
+        const currentPosition = state.playerState.position;
+        const seekTo = (currentPosition + 15) * 1000; // 15 seconds ahead
+        await api!.player.seek.put(seekTo);
+    }
+
+    @autobind
+    @withErrorAsync()
+    @withApi()
+    async skipBack(api?: Api): Promise<void> {
+        const state = getState();
+        const currentPosition = state.playerState.position;
+        const seekTo = Math.max((currentPosition - 15) * 1000, 0); // 15 seconds back
+        await api!.player.seek.put(seekTo);
+    }
+
+    @autobind
     actionSignIn() {
         commands.executeCommand('vscode.open', Uri.parse(`${getAuthServerUrl()}/login`)).then(() => {
             const { createServerPromise, dispose } = createDisposableAuthSever();
@@ -337,3 +357,4 @@ class ActionCreator {
 }
 
 export const actionsCreator = new ActionCreator();
+export const { skipForward, skipBack } = actionsCreator;
